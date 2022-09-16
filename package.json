@@ -1,0 +1,19 @@
+{
+  "name": "blood-bank-manager-server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HrridoyV2/blood-bank-manager-server.git"
+  },
+  "author": "Junaid",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/HrridoyV2/blood-bank-manager-server/issues"
+  },
+  "homepage": "https://github.com/HrridoyV2/blood-bank-manager-server#readme"
+}
