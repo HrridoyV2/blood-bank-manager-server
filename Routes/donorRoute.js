@@ -11,6 +11,7 @@ router.route('/login').post(login);
 router.route('/logout').get(logout)
 router.route('/me').get(isAuthenticatedDonor ,getDonorProfile)
 router.route('/me/update').put(isAuthenticatedDonor,updateDonorProfile)
+router.route('/donors').get(allDonors)
 router.route('/admin/donors').get(isAuthenticatedDonor,authorizedRule('admin'),allDonors)
 router.route('/admin/verify-donor/:id').put(isAuthenticatedDonor,authorizedRule('admin'),verifyDonor)
 router.route('/admin/donor/:id')
