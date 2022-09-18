@@ -6,12 +6,13 @@ const sendToken = require('../Utlis/jwtToken')
 
 exports.register = asyncError(async(req, res, next)=>{
     
-    const {name,email,password}=req.body;
+    const {name,email,phone,password}=req.body;
 
     const donor = await Donor.create({
         name,
         email,
         password,
+        phone
        
     })
     sendToken(donor,200,res)
