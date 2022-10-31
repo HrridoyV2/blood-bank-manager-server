@@ -2,7 +2,7 @@ const express=require('express');
 
 const router=express.Router();
 
-const { register,login,logout,forgotPassword,changePassword,getDonorProfile, updateDonorProfile, allDonors, getDonorDetails, updateDonorProfileById, deleteDonor, verifyDonor } = require('../Controller/Donor');
+const { register,login,logout,forgotPassword,changePassword,getDonorProfile, updateDonorProfile, allDonors, getDonorDetails, updateDonorProfileById, deleteDonor, verifyDonor, donorByCityAndBlood } = require('../Controller/Donor');
 
 const { isAuthenticatedDonor,authorizedRule }=require('../Middleware/checkAuth')
 
@@ -12,6 +12,7 @@ router.route('/logout').get(logout)
 router.route('/me').get(isAuthenticatedDonor ,getDonorProfile)
 router.route('/me/update').put(isAuthenticatedDonor,updateDonorProfile)
 router.route('/donors').get(allDonors)
+router.route('/donors-by-city-and-blood-group').get(donorByCityAndBlood)
 router.route('/admin/donors').get(isAuthenticatedDonor,authorizedRule('admin'),allDonors)
 router.route('/admin/verify-donor/:id').put(isAuthenticatedDonor,authorizedRule('admin'),verifyDonor)
 router.route('/admin/donor/:id')

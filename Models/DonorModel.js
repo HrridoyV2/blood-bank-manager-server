@@ -22,6 +22,41 @@ const donorSchema=new mongoose.Schema({
     type:String,
     required:true
  },
+ fullName:{
+    type:String,
+    // required:[true,'Please enter your name'],  
+},
+address:{
+    type:String,
+ },
+city:{
+    type:String,
+ },
+ gender:{
+    type:String,
+
+ },
+ weight:{
+    type:String,
+
+ },
+ bloodGroup:{
+    type:String,
+
+ },
+ isReadyToDonate:{
+    type:Boolean,
+
+ },
+ DOB:{
+    type:Date,
+ },
+ 
+
+ lastDonatedAt:{
+    type:Date,
+    default: Date.now
+},
  
  role:{
     type:String,

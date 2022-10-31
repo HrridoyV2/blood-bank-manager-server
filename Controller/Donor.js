@@ -6,15 +6,9 @@ const sendToken = require('../Utlis/jwtToken')
 
 exports.register = asyncError(async(req, res, next)=>{
     
-    const {name,email,phone,password}=req.body;
+    // const {name,email,phone,password}=req.body;
 
-    const donor = await Donor.create({
-        name,
-        email,
-        password,
-        phone
-       
-    })
+    const donor = await Donor.create(req.body)
     sendToken(donor,200,res)
 });
 
@@ -51,7 +45,7 @@ exports.getDonorProfile= asyncError(async(req, res, next)=>{
     const donor= await Donor.findById(req.user.id)
     res.status(200).json({
         success:true,
-        Donor
+        donor
 
     })
 })
@@ -59,19 +53,14 @@ exports.getDonorProfile= asyncError(async(req, res, next)=>{
 
 //update user profile =>/api/v1/me/update
 exports.updateDonorProfile = asyncError(async(req, res, next)=>{
-    const newDonorData={
-        name:req.body.name,
-        email:req.body.email
-    }
-    //update avatar: TODO
-
-    const donor = await Donor.findByIdAndUpdate(req.user.id,newDonorData,{
-        new:true,
-        runValidators: true,
-        usefindAndModify: false
-    })
+    // const newDonorData=req.body
+    // //update avatar: TODO
+   
+    let donor = await Donor.findByIdAndUpdate(req.donor.id,req.body)
+    donor =await Donor.findById(req.donor.id)
     res.status(200).json({
-        success: true
+        success: true,
+        donor
     })
 })
 
@@ -100,6 +89,16 @@ exports.allDonors = asyncError(async(req, res, next)=>{
 //get user details => /api/v1/user/:id
 exports.getDonorDetails = asyncError(async(req, res, next)=>{
     const donor=await Donor.findById(req.params.id);
+    if(!donor){
+        return next(new ErrorHandler(`donor not found with id:${req.params.id}`))
+    }
+    res.status(200).json({
+        success: true,
+        donor
+    })
+})
+exports.donorByCityAndBlood = asyncError(async(req, res, next)=>{
+    const donor=await Donor.find({city:req.body.city,bloodGroup:req.body.bloodGroup});
     if(!donor){
         return next(new ErrorHandler(`donor not found with id:${req.params.id}`))
     }
