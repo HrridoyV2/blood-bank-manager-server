@@ -52,7 +52,6 @@ exports.getDonorProfile= asyncError(async(req, res, next)=>{
     res.status(200).json({
         success:true,
         Donor
-
     })
 })
 
@@ -65,7 +64,7 @@ exports.updateDonorProfile = asyncError(async(req, res, next)=>{
     }
     //update avatar: TODO
 
-    const donor = await Donor.findByIdAndUpdate(req.user.id,newDonorData,{
+    const donor = await Donor.findByIdAndUpdate(req.user?.id,newDonorData,{
         new:true,
         runValidators: true,
         usefindAndModify: false
