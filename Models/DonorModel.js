@@ -22,6 +22,47 @@ const donorSchema=new mongoose.Schema({
     type:String,
     required:false
  },
+ fullName:{
+    type:String,
+    // required:[true,'Please enter your name'],  
+},
+address:{
+    type:String,
+ },
+city:{
+    type:String,
+ },
+ gender:{
+    type:String,
+
+ },
+ weight:{
+    type:String,
+
+ },
+ bloodGroup:{
+    type:String,
+
+ },
+ bloodDetails:{
+    type:mongoose.Schema.Types.ObjectId,
+    // ref:Blood
+
+ },
+ 
+ isReadyToDonate:{
+    type:Boolean,
+
+ },
+ DOB:{
+    type:Date,
+ },
+ 
+
+ lastDonatedAt:{
+    type:Date,
+    default: Date.now
+},
  
  role:{
     type:String,
@@ -31,6 +72,30 @@ const donorSchema=new mongoose.Schema({
      type:Date,
      default: Date.now
  },
+ requestedBlood:[
+    {
+        fullName:{
+            type:String,
+            required:[true,'Please enter your name'],  
+        },
+        phone:{
+            type:String,
+            required:true
+         },
+        address:{
+            type:String,
+         },
+        
+         recuiredBloodGroup:{
+            type:String,
+        
+         },
+         donatedDate:{
+            type:Date,
+            default: Date.now
+        },
+    }
+],
  resetPsswordToken:String,
  resetPsswordExpire:Date
 

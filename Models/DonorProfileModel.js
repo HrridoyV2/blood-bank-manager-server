@@ -1,6 +1,6 @@
 const mongoose=require('mongoose');
 
-const productSchema=new mongoose.Schema({
+const donorSchema=new mongoose.Schema({
     fullName:{
         type:String,
         required:[true,'Please enter your name'],  
@@ -10,6 +10,9 @@ const productSchema=new mongoose.Schema({
         required:true
      },
     address:{
+        type:String,
+     },
+    city:{
         type:String,
      },
      gender:{
@@ -24,9 +27,14 @@ const productSchema=new mongoose.Schema({
         type:String,
     
      },
+     isReadyToDonate:{
+        type:Boolean,
+    
+     },
      DOB:{
         type:Date,
      },
+     
 
      lastDonatedAt:{
         type:Date,
@@ -34,4 +42,4 @@ const productSchema=new mongoose.Schema({
     },
 })
 
-module.exports=mongoose.model('Product',productSchema);
+module.exports=mongoose.model('DonorProfile',donorSchema);
