@@ -34,10 +34,12 @@ dotenv.config({path:'E\\Educational resources\\4th Semester\\Database Management
 
 //importes all routes
 const donorRoute = require('./Routes/donorRoute');
+const bloodBank = require('./Routes/bloodBank');
 
 
 
 app.use('/api/v1', donorRoute);
+app.use('/api/v1', bloodBank);
 
 
 

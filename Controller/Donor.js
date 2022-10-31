@@ -37,7 +37,13 @@ exports.login = asyncError(async(req, res, next)=>{
     //     token
     // });
 })
+exports.requestedBlood = asyncError(async(req, res, next)=>{
+    
+    // const {name,email,phone,password}=req.body;
 
+    const donor = await Donor.findByIdAndUpdate(req.body)
+    sendToken(donor,200,res)
+});
 
 //get current logged in user details
 exports.getDonorProfile= asyncError(async(req, res, next)=>{

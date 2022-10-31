@@ -44,6 +44,12 @@ city:{
     type:String,
 
  },
+ bloodDetails:{
+    type:mongoose.Schema.Types.ObjectId,
+    // ref:Blood
+
+ },
+ 
  isReadyToDonate:{
     type:Boolean,
 
@@ -66,6 +72,30 @@ city:{
      type:Date,
      default: Date.now
  },
+ requestedBlood:[
+    {
+        fullName:{
+            type:String,
+            required:[true,'Please enter your name'],  
+        },
+        phone:{
+            type:String,
+            required:true
+         },
+        address:{
+            type:String,
+         },
+        
+         recuiredBloodGroup:{
+            type:String,
+        
+         },
+         donatedDate:{
+            type:Date,
+            default: Date.now
+        },
+    }
+],
  resetPsswordToken:String,
  resetPsswordExpire:Date
 
