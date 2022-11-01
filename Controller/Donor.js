@@ -117,7 +117,6 @@ exports.donorByCityAndBlood = asyncError(async(req, res, next)=>{
     let city=(req.params.city)
    
     let bloodGroup=(req.params.bloodGroup)
-    console.log(req.params)
     const donor=await Donor.find({city:city,bloodGroup:bloodGroup});
     if(!donor){
         return next(new ErrorHandler(`donor not found with id:${req.params.id}`))
