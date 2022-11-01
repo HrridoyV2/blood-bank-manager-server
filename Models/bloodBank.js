@@ -7,6 +7,9 @@ const bloodBank = new mongoose.Schema({
         type: String,
 
     },
+    name: {
+        type: String
+    },
     bloods:
         [
             {

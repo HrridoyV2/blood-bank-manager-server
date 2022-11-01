@@ -69,6 +69,16 @@ exports.updateDonorProfile = asyncError(async(req, res, next)=>{
         donor
     })
 })
+exports.requestBlood = asyncError(async(req, res, next)=>{
+    
+   
+    let donor = await Donor.findByIdAndUpdate(req.params.id,req.body)
+    donor =await Donor.findById(req.params.id)
+    res.status(200).json({
+        success: true,
+        donor
+    })
+})
 
 //logout user=>/api/v1/logout
 exports.logout= asyncError(async(req, res, next)=>{
@@ -104,6 +114,7 @@ exports.getDonorDetails = asyncError(async(req, res, next)=>{
     })
 })
 exports.donorByCityAndBlood = asyncError(async(req, res, next)=>{
+    console.log(req.body, "sdio");
     const donor=await Donor.find({city:req.body.city,bloodGroup:req.body.bloodGroup});
     if(!donor){
         return next(new ErrorHandler(`donor not found with id:${req.params.id}`))
